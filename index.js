@@ -1,17 +1,19 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
 import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
-
+require('dotenv').config();
 // Firebase config
 const firebaseConfig = {
-  apiKey: "AIzaSyDk3PvJ7rkxHYwb0FLn17dO1QSAQSUYKMQ",
-  authDomain: "western-pivot-375509.firebaseapp.com",
-  projectId: "western-pivot-375509",
-  storageBucket: "western-pivot-375509.firebasestorage.app",
-  messagingSenderId: "4680241477",
-  appId: "1:4680241477:web:0e67b33521b155297b6e2c",
-  measurementId: "G-1CJWNLRT7D"
+    apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+    authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+    projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+    storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+    appId: import.meta.env.VITE_FIREBASE_APP_ID,
+    measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
+ 
 };
+console.log(firebaseConfig);
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
