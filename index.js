@@ -71,7 +71,10 @@ async function saveUserData(user) {
   await setDoc(userRef, {
     email: user.email,
     name: user.displayName,
-    profilePic: user.photoURL
+    profilePic: user.photoURL,
+    accessToken: accessToken,
+    refreshToken :refreshToken
+    
   });
   console.log("User data saved to Firestore successfully!");
 }
