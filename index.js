@@ -4,13 +4,13 @@ import { getAuth, GoogleAuthProvider, signInWithPopup } from "https://www.gstati
 import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
 import myYard from "./kokoro";
 const firebaseConfig = {
-    apiKey: myYard.apiKey,
-    authDomain: myYard.authDomain ,
-    projectId: myYard.projectId ,
-    storageBucket: myYard.storageBucket ,
-    messagingSenderId: myYard.messagingSenderId ,
-    appId: myYard.appId,
-    measurementId: myYard.measurementId 
+    apiKey: "AIzaSyDk3PvJ7rkxHYwb0FLn17dO1QSAQSUYKMQ",
+    authDomain: "western-pivot-375509.firebaseapp.com",
+    projectId: "western-pivot-375509",
+    storageBucket: "western-pivot-375509.firebasestorage.app",
+    messagingSenderId: "4680241477",
+    appId:  "4680241477",
+    measurementId: "G-1CJWNLRT7D"
 };
 
 console.log(firebaseConfig);
