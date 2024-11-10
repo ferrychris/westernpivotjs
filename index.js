@@ -1,18 +1,20 @@
+// Import Firebase SDK
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
 import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
-require('dotenv').config();
-// Firebase config
+
+import firebaseConfig from "./kokoro";
+// Firebase config using environment variables injected by Vite or your bundler
 const firebaseConfig = {
-    apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
-    authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
-    projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
-    storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
-    messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
-    appId: import.meta.env.VITE_FIREBASE_APP_ID,
-    measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
- 
+    apiKey: firebaseConfig.apiKey,
+    authDomain: firebaseConfig.authDomain ,
+    projectId: firebaseConfig.projectId ,
+    storageBucket: firebaseConfig.storageBucket ,
+    messagingSenderId: firebaseConfig.messagingSenderId ,
+    appId: firebaseConfig.appId,
+    measurementId: firebaseConfig.measurementId 
 };
+
 console.log(firebaseConfig);
 
 // Initialize Firebase
@@ -44,8 +46,8 @@ async function runAuth() {
     // Save tokens to Firestore
     await saveTokensToFirestore(user.uid, accessToken, refreshToken);
 
-    // Save additional user data to Firestore
-    await saveUserData(user);
+    // Save additional user data to Firestore, passing tokens as arguments
+    await saveUserData(user, accessToken, refreshToken);
 
     handleAuthSuccess(user);
   } catch (error) {
@@ -68,15 +70,14 @@ async function saveTokensToFirestore(userId, accessToken, refreshToken) {
 }
 
 // Save user data to Firestore
-async function saveUserData(user) {
+async function saveUserData(user, accessToken, refreshToken) {
   const userRef = doc(db, 'users', user.uid);
   await setDoc(userRef, {
     email: user.email,
     name: user.displayName,
     profilePic: user.photoURL,
     accessToken: accessToken,
-    refreshToken :refreshToken
-    
+    refreshToken: refreshToken
   });
   console.log("User data saved to Firestore successfully!");
 }
