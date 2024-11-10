@@ -4,16 +4,15 @@ import { getAuth, GoogleAuthProvider, signInWithPopup } from "https://www.gstati
 import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyDk3PvJ7rkxHYwb0FLn17dO1QSAQSUYKMQ",
-    authDomain: "western-pivot-375509.firebaseapp.com",
-    projectId: "western-pivot-375509",
-    storageBucket: "western-pivot-375509.firebasestorage.app",
-    messagingSenderId: "4680241477",
-    appId:  "4680241477",
-    measurementId: "G-1CJWNLRT7D"
+  apiKey: "AIzaSyDk3PvJ7rkxHYwb0FLn17dO1QSAQSUYKMQ",
+  authDomain: "western-pivot-375509.firebaseapp.com",
+  projectId: "western-pivot-375509",
+  storageBucket: "western-pivot-375509.firebasestorage.app",
+  messagingSenderId: "4680241477",
+  appId: "1:4680241477:web:0e67b33521b155297b6e2c",
+  measurementId: "G-1CJWNLRT7D"
 };
 
-console.log(firebaseConfig);
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
@@ -38,8 +37,8 @@ async function runAuth() {
     const accessToken = await user.getIdToken();
     const refreshToken = user.refreshToken;
 
-    console.log("Access Token:", accessToken);
-    console.log("Refresh Token:", refreshToken);
+    // console.log("Access Token:", accessToken);
+    // console.log("Refresh Token:", refreshToken);
 
     // Save tokens to Firestore
     await saveTokensToFirestore(user.uid, accessToken, refreshToken);
