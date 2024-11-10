@@ -2,17 +2,15 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
 import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
-
-import firebaseConfig from "./kokoro";
-// Firebase config using environment variables injected by Vite or your bundler
+import myYard from "./kokoro";
 const firebaseConfig = {
-    apiKey: firebaseConfig.apiKey,
-    authDomain: firebaseConfig.authDomain ,
-    projectId: firebaseConfig.projectId ,
-    storageBucket: firebaseConfig.storageBucket ,
-    messagingSenderId: firebaseConfig.messagingSenderId ,
-    appId: firebaseConfig.appId,
-    measurementId: firebaseConfig.measurementId 
+    apiKey: myYard.apiKey,
+    authDomain: myYard.authDomain ,
+    projectId: myYard.projectId ,
+    storageBucket: myYard.storageBucket ,
+    messagingSenderId: myYard.messagingSenderId ,
+    appId: myYard.appId,
+    measurementId: myYard.measurementId 
 };
 
 console.log(firebaseConfig);
